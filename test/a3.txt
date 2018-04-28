@@ -1,4 +1,3 @@
-Copyright (C) DICP-CMC Innovation Institute of Medicine.
 aaaaaaaaaaaaaaaaaaaa
 
 bbbbbbbbbbbbbbbbbbb
@@ -12,4 +11,4 @@ ccccccccccccc
 ccccccccccc
 
 
-zzzzzzzzzzzzzzddd
+zzzzzzzzzzzzzz
