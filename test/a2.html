@@ -1,0 +1,107 @@
+Copyright (C) DICP-CMC Innovation Institute of Medicine.
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<title>wz</title>
+<!--本地资源访问路径-->
+<!-- <script type="text/javascript" src="../html/resources/js/jquery.min.js"></script>
+<script type="text/javascript" src="../html/resources/js/request.js"></script>
+<link rel="stylesheet" type="text/css" href="../html/resources/css/selectFilter.css" /> -->
+<!--服务器资源访问路径-->
+<script type="text/javascript" src="./resources/js/jquery.min.js"></script>
+<script type="text/javascript" src="./resources/js/request.js"></script>
+<link rel="stylesheet" type="text/css" href=".//resources/css/selectFilter.css" />
+</head>
+<body style="background-color: #fffff0;">
+		<div onclick="checkradio();" class="check_div">
+		<label for="rootrad" hidden><input id="rootrad" type="radio" value="0" name="radio" hidden>创建根样本</label>  
+		<label for="elerad"><input id="elerad" type="radio" value="1" name="radio" checked="checked">创建子样本</label> 
+		<label for="createRoot"><input id="createRoot" type="radio" value="2" name="radio" >创建根样本</label> 
+	</div> 
+<div id="container_div" class="container_div">
+		<div id="left_div" class="left_div">
+		<!--查找父节点id-->
+		<label class="title-text">一、查找父样本编码</label></br>
+		<label ><font size="2px">父 样 本 ：</font></label>
+		<input id="wzbm" list="wz_ele_list" class="filter-text" placeholder="请输入物资编码" onkeyup="getSampleCode(0,false);rootUpperCase('wzbm');"/>
+			<datalist id="wz_ele_list">
+		</datalist>
+		<!-- <button id="findPid" class="btn" onclick="splitWzCode();showCodeText();">选择</button></br></br> -->
+		<button id="findPid" class="btn" onclick="getSampleCode(0,true);rootUpperCase('wzbm');">选择</button></br></br>
+		<label class="title-text">二、提交样本编码信息</label></br>
+		<!-- 物资地点 -->
+		<label ><font size="2px">样本地点：</font></label>
+		<select name="filter" id="wzdd" class="filter-text" onchange="showCodeText();"/>
+			<option value="new" disabled selected>物资地点</option>
+		</select></br>
+		<!-- 物资拼音 中药名称-->
+		<label ><font size="2px">中药名称：</font></label>
+		<select name="filter" id="wzpy" class="filter-text" onchange="shouCodeText();"/>
+			<option value="new" disabled selected>中药名称</option>
+		</select></br>
+		<!-- 物资拼音 中药名称 手动输入匹配 -->
+		<!-- <input id="wzpy" list="wzpy_list" class="filter-text" placeholder="中药名称" onchange="showCodeText();"/>
+		<datalist id="wzpy_list">
+		</datalist></br> -->
+		<!-- 物资种类 -->
+		<label ><font size="2px">样本种类：</font></label>
+		<select name="filter" id="wzkind"  class="filter-text" onchange="showCodeText();"/>
+				<option value="new" disabled selected>样本种类</option>
+		</select></br>
+		<!-- 物资操作 -->
+		<label ><font size="2px">样本操作：</font></label>
+		<select name="filter" id="wzcz" class="filter-text" onchange="showCodeText(true);"/>
+				<option value="new" disabled selected>样本操作</option>
+		</select></br>
+		<!-- 物资项目 -->
+		<label ><font size="2px">样本项目：</font></label>
+		<select name="filter" id="wzxm" class="filter-text" onchange="showCodeText(true);"/>
+						<option value="new" disabled selected>样本项目</option>
+		</select></br>
+		<!-- 物资日期 -->
+		<label ><font size="2px">样本日期：</font></label>
+		<input type="date" id="wzrq" class="filter-text"  onchange="showCodeText(true);"/></br>
+		<!--物资重量-->
+		<label ><font size="2px">样本重量：</font></label>
+		<input type="text" id="weight" placeholder="请输入样本重量,单位mg"  class="filter-text"/></br>
+		<!--物资存放位置-->
+		<label ><font size="2px">样本位置：</font></label>
+		<input type="text" id="position" placeholder="请输入样本位置"  class="filter-text"/></br>
+		<!--物资描述-->
+		<label ><font size="2px">样本描述：</font></label>
+		<input type="text" id="description" name="description" class="filter-text" placeholder="请输入样本描述"/></br>
+		<!-- 样本数量 -->
+		<label ><font size="2px">样本数量：</font></label>
+		<input class="filter-text" id="sampleNum" placeholder="请输入样本数量" value="1"/>
+		<button id="submit" class="btn" onclick="submitFuc()">提交</button></br></br>
+		<!--查找父节点、子节点编码信息-->
+		<label class="title-text">三、查找样本树</label></br>
+		<label ><font size="2px">样本编码：</font></label>
+		<input id="wzfind" list="wz_ele_list" class="filter-text" placeholder="请输入物资编码" onkeyup="getSampleCode(1,false)">
+			<datalist id="wz_ele_list">
+		</datalist>
+		<button id="findbtn" class="btn" type="button" onclick="getInfo()">查找</button></br>
+		<div id="show" style="cursor: pointer;"/>
+	</div>
+</div><!-- 生成自编码展示 -->
+<div id="right_div" class="right_div">
+		<div id="childTitlediv">
+			<label ><font size="5px">生成样本编号</font></label>
+		</div>
+		<div id="childSamplediv" class="child-text"></div>
+</div>
+<!-- 创建根样本-手动输入 -->
+<div id="crootdiv" class="left_div">
+	<label class="title-text">创建根样本</label></br>
+	<input type="text" id="crootText" name="crootText" class="filter-text" placeholder="请输入样本编号" onkeyup="rootUpperCase('crootText')"/></br>
+	<button id="findCroot" type="button" onclick="submitFuc()" >创建</button>
+</div>
+<!--加载本地数据-->
+<script type="text/javascript" src="./resources/js/loadData.js">
+</script>
+<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+</div>
+</body>
+</html>
