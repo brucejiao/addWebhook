@@ -1,4 +1,3 @@
-//Copyright (C) DICP-CMC Innovation Institute of Medicine.
 var HTTP_URL = "http://www.castim.cn/zuneihaocai/sample.php";//接口地址
 var _pidCode;//物品编码pid
 var _wzCode;//物品code
