@@ -3,7 +3,7 @@ Copyright (C) DICP-CMC Innovation Institute of Medicine.
 <?php
  error_reporting(E_ERROR);
  require_once("config.inc.php"); 
- limitvalidation(3);
+ limitvalidation(3); 
  $administration=$_SESSION['user_tid']==1?true:false;
  
  if(!$_SESSION['user_gid']){

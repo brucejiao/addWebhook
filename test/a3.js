@@ -5,7 +5,7 @@ var _wzCode;//物品code
 var _childNode='';//子节点Lable
 var _parentNode='';//父节点Lable
 var _currInfo ='';//当前节点信息
-var _num_index = 0;//计数器
+var _num_index = 0;//计数器 
 var _flag;//根节点:0 子节点:1
 
 //查找样本编码
