@@ -4,7 +4,7 @@ Copyright (C) DICP-CMC Innovation Institute of Medicine.
  error_reporting(E_ERROR);
  require_once("config.inc.php"); 
  limitvalidation(3); 
- $administration=$_SESSION['user_tid']==1?true:false;
+ $administration=$_SESSION['user_tid']==1?true:false; 
  
  if(!$_SESSION['user_gid']){
 	 echo "你还没有分配到小组，无法填写购买申请单。请与管理员联系。";
