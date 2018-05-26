@@ -1,3 +1,4 @@
+//Copyright (C) DICP-CMC Innovation Institute of Medicine.
 
 var HTTP_URL = "http://www.castim.cn/zuneihaocai/sample.php";//接口地址
 var _pidCode;//物品编码pid
@@ -6,7 +7,7 @@ var _childNode='';//子节点Lable
 var _parentNode='';//父节点Lable
 var _currInfo ='';//当前节点信息 
 var _num_index = 0;//计数器 
-var _flag;//根节点:0 子节点:1
+var _flag;//根节点:0 子节点:1 
 
 //查找样本编码
 //vrif  判断是否提示--search：false check:--true
