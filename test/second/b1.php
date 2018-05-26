@@ -1,4 +1,4 @@
-Copyright (C) DICP-CMC Innovation Institute of Medicine.
+
 <!DOCTYPE html>
 <?php
  error_reporting(E_ERROR);
