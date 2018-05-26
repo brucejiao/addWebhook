@@ -1,5 +1,6 @@
+//Copyright (C) DICP-CMC Innovation Institute of Medicine.
 <!DOCTYPE html>
-<?php
+<?php 
  error_reporting(E_ERROR); 
  require_once("config.inc.php"); 
  limitvalidation(3); 
